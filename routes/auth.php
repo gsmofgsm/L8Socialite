@@ -62,3 +62,7 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+
+Route::get('/auth/redirect', [AuthenticatedSessionController::class, 'redirectToProvider']);
+
+Route::get('/auth/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
